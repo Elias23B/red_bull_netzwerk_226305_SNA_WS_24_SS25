@@ -1,0 +1,31 @@
+---
+# Codebuch: Spielertransfers im Red Bull Netzwerk
+
+Dieses Codebuch beschreibt die Struktur der erhobenen Netzwerkdaten zu Spielertransfers zwischen den Red Bull Clubs:  
+**RB Leipzig**, **FC Red Bull Salzburg**, **FC Liefering**, **New York Red Bulls**, **Red Bull Bragantino**  
+Erfasste Saisons: **2021/22**, **2022/23**, **2023/24**
+---
+
+## Edgelist
+
+| **Spalte** | **Beschreibung** | **Beispiel** |
+|-----------------|--------------------------------------|-----------------|
+| `from` | Abgebender Verein oder Spieler (als ID) | `rbs` (FC Red Bull Salzburg) |
+| `to` | Aufnehmender Verein (als ID) | `rbl` (RB Leipzig) |
+| `weight` | Transferwert in Euro (als Ganzzahl, z. B. 32000000; -1 = keine Angabe) | `32000000` |
+| `money` | Kategorisierte Ablösehöhe:1 = 0 €, 2 = \<15 Mio, 3 = \>15 Mio, 4 = ≥30 Mio | `2` |
+| `transferart` | Art des Transfers: 1 = Kauf, 2 = Leihe, 3 = ablösefrei, 4 = Draft | `1` |
+| `saison` | Saison des Transfers | `21_22` |
+
+------------------------------------------------------------------------
+
+## Node-Liste
+
+| **Spalte** | **Beschreibung** | **Beispiel** |
+|------------------|-------------------------------------|------------------|
+| `id` | Eindeutige ID (snake_case bei Spielern) | `rbs`, `th_mue` |
+| `name` | Vollständiger Name des Spielers oder Vereins | FC Red Bull Salzburg, Thomas Müller |
+| `typ` | Typ des Knotens:<br>1 = Spieler, 2 = Verein | `2` |
+| `alter` | Geburtsjahr des Spielers; -1 bei Vereinen | `2001` / `-1` |
+| `position` | Spielerposition (nur bei Spielern), `-1` bei Vereinen | `innenverteidiger` |
+| `land` | Herkunftsland des Vereins oder Nationalität des Spielers | `oesterreich` |
